@@ -1,2 +1,2 @@
 # jhsphbiostat621-assignment
-JHSPH 140.621.81 Course assignment
+This is the repo for the course assignments of 140.621.81.
