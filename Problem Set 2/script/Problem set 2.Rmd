@@ -7,12 +7,12 @@ output: html_document
 
 ```{r "setup", include = FALSE}
 require("knitr")
-opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2/Problem set 2")
+opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2")
 ```
 
 ```{r}
 # Set up
-setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2/Problem set 2")
+setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2")
 ```
 
 # Problem 1. Vitamin A Supplementation to Prevent Children’s Mortality in Nepal
