@@ -1,0 +1,158 @@
+---
+title: "Problem set 2 solution"
+author: "Zhengting (Johnathan) He"
+date: "2021/9/15"
+output: html_document
+---
+
+```{r "setup", include = FALSE}
+require("knitr")
+opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2/Problem set 2")
+```
+
+```{r}
+# Set up
+setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2/Problem set 2")
+```
+
+# Problem 1. Vitamin A Supplementation to Prevent Children’s Mortality in Nepal
+
+
+## Section 1: Probability, Binomial and Poisson Models
+
+
+i. The Nepal data set is located in the `csv` data file named `nepal621.csv`. Refer to 
+your Class Dataset Code Book for the file format. Load the tidyverse with:
+`library(tidyverse)` Open the data set and name it `nepal621`. Construct a 2x2 
+contingency table of treatment (placebo or Vitamin A) against status (alive or dead) at
+sixteen months of follow-up. Calculate the rate of child mortality in Nepal for children 
+receiving placebo; Vitamin A. Summarize the difference in mortality in a sentence as if 
+for a journal.
+
+```{r}
+require(tidyverse)
+
+nepal621 <- read_csv("./data/nepal621.csv")
+CT <- table(nepal621$trt, nepal621$status)
+addmargins(CT)
+prop.table(CT, margin=1)
+```
+
+```
+The rate of child mortality in Nepal for children receiving Vitamin A is 0.0170, while the rate for children receiving placebo is 0.0217. The rate difference and ratio for children receiving Vitamin A compared to receiving placebo is -0.0047 and 0.7834 respectively, indicating children receiving Vitamin A have a lower mortality rate compared with children receiving placebo in Nepal.
+```
+
+
+ii. For a randomly chosen child from the study population, calculate the following 
+probabilities from the 2x2 contingency table you constructed above.
+
++ *Marginal Probabilities*
+
+```
+Pr(VitA) = 13732/27121 = 0.5063
+Pr(Died) = 523/27121 = 0.0193
+```
+
++ *Joint Probabilities*
+
+```
+Pr(Died and VitA) = 233/27121 = 0.0086
+Pr(Died and Placebo) = 290/27121 = 0.0107
+```
+
++ *Conditional Probabilities*
+
+```
+Pr(Died | VitA) = Pr(Died and VitA)/Pr(VitA) = 0.0086/0.5063 = 0.0170
+Pr(Died | Placebo) = Pr(Died and Placebo)/Pr(Placebo) = 0.0107/(13389/27121) = 0.0217
+```
+
+By hand, use Bayes’ Theorem and the 2x2 contingency table to calculate the probability
+that a child that died received Vitamin A. Use the observed rates for each term below to
+see how the calculations work.
+
+```
+Pr(VitA | Died) = Pr(VitA and Died) / Pr(Died)
+                = Pr(Died | VitA)*Pr(VitA) / Pr(Died)
+                = Pr(Died | VitA)*Pr(VitA) / (Pr(Died | VitA)*Pr(VitA) + Pr(Died | Placebo)*Pr(Placebo))
+                = 0.0170*0.5063 / (0.0170*0.5063 + 0.0217*13389/27121)
+                = 0.4455
+```
+
+
+iii. For each treatment group, construct the 2x2 contingency table of sex (male or female)
+versus vital status (alive or dead). From these tables, calculate the overall probability of
+dying for males and females separately by treatment group. Describe in a sentence as if
+for a journal the relationship between mortality and treatment. Does the effect of
+treatment appear to vary by sex? If so, we say: “sex is an effect modifier,” or “sex
+modifies the effect of vitamin A on mortality” or there is an “interaction” of sex and
+treatment in causing mortality. Write another sentence or two describing differences in
+the treatment effect between boys and girls. Be quantitative and use the term “effect
+modification.”
+
+```{r}
+nepal.plac <- filter(nepal621, trt == "Placebo")
+nepal.vit <- filter(nepal621, trt == "Vit A")
+
+# Placebo group
+CT <- table(nepal.plac$sex, nepal.plac$status)
+addmargins(CT)
+prop.table(CT, margin=1)
+
+# Vit A group
+CT <- table(nepal.vit$sex, nepal.vit$status)
+addmargins(CT)
+prop.table(CT, margin=1)
+```
+
+```
+The overall probability of dying for males and females separately by treatment group are:
+    Pr(Died | Male & Placebo) = 124/6847 = 0.0181
+    Pr(Died | Female & Placebo) = 166/6542 = 0.0254
+    Pr(Died | Male & Vit A) = 112/7067 = 0.0158
+    Pr(Died | Female & Vit A) = 121/6665 = 0.0182
+
+The mortality probability is 0.0023 and 0.0072 lower in vitamin A treatment group compared with placebo group and the ratio is 0.8751 and 0.7155 in treatment group compared with placebo group, in male and female subgroups respectively, indicating treatment can reduce mortality probability.
+
+The mortality probability is 0.0024 higher in female subgroup compared with male subgroup, and the ratio is 1.1455 in female subgroup compared with male subgroup, in vitamin treatment group, indicating the effect of treatment apper to vary by sex; thus, sex iss an effect modifier for the effect of vitmain A on mortality.
+```
+
+
+iv. Summarize in a table and/or figure the evidence (data) relevant to the null hypotheses
+that:
+
+(1) Vitamin A supplementation has no effect on mortality in Nepali pre-school children;
+
+and
+
+(2) The treatment effect is the same for both boys and girls (i.e., “not modified by sex”).
+
+|Group|Evidence|Conclusion|
+|:--:|:--:|:--:|
+|Null hypothesis (1)|Vitamin A group compared with placebo group <br/> Death probability difference = -0.0047 <br/> Death probability ratio = 0.7834 <br/> |Null hypothesis (1) may not hold|
+|Null hypothesis (2)|In vitamin A treatment group <br/> Male subgroup compared with female subgroup <br/> Death probability difference = -0.0023 <br/> Death probability ratio = 0.8730|Null hypothesis (2) may not hold|
+
+
+v. Consider a family with 3 boys and 2 girls who received placebo. Suppose that each
+child’s survival is independent of all the other children in the family. Calculate the
+probability that 0, 1, 2 or 3 boys die during the study follow-up.
+
+```
+x ~ Bin(3, 0.0181)
+P(x = 0) = 0.94668
+P(x = 1) = 0.05235
+P(x = 2) = 0.00097
+P(x = 3) = 0.00001
+```
+
+
+vi. Use the Poisson approximation to the binomial distribution to recalculate probabilities of
+0, 1, 2 or 3 boys dying in problem v.
+
+```
+x ~ Pois(0.0181)
+P(x = 0) = 0.98206
+P(x = 1) = 0.01778
+P(x = 2) = 0.00016
+P(x = 3) = 0
+```
