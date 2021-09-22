@@ -29,10 +29,12 @@ sixteen months of follow-up. Calculate the rate of child mortality in Nepal for 
 receiving placebo; Vitamin A. Summarize the difference in mortality in a sentence as if 
 for a journal.
 
-```{r}
+```{r, message = FALSE}
 require(tidyverse)
-
 nepal621 <- read_csv("./data/nepal621.csv")
+```
+
+```{r}
 CT <- table(nepal621$trt, nepal621$status)
 addmargins(CT)
 prop.table(CT, margin=1)
@@ -114,7 +116,7 @@ The overall probability of dying for males and females separately by treatment g
 
 The mortality probability is 0.0023 and 0.0072 lower in vitamin A treatment group compared with placebo group and the ratio is 0.8751 and 0.7155 in treatment group compared with placebo group, in male and female subgroups respectively, indicating treatment can reduce mortality probability.
 
-The mortality probability is 0.0024 higher in female subgroup compared with male subgroup, and the ratio is 1.1455 in female subgroup compared with male subgroup, in vitamin treatment group, indicating the effect of treatment apper to vary by sex; thus, sex iss an effect modifier for the effect of vitmain A on mortality.
+The mortality probability is 0.0024 higher in female subgroup compared with male subgroup, and the ratio is 1.1455 in female subgroup compared with male subgroup, in vitamin treatment group. Compared to the overall treatment group, the mortality probability is 0.0012 higher in female subgroup and 0.0011 lower in male subgroup, and the ratio is 1.0699 and 0.9340 for female and male subgroups respectively compared to the overall treatment group. These evidence indicates the effect of treatment appear to vary by sex; and, sex is an effect modifier for the effect of vitmain A on mortality.
 ```
 
 
@@ -129,8 +131,8 @@ and
 
 |Group|Evidence|Conclusion|
 |:--:|:--:|:--:|
-|Null hypothesis (1)|Vitamin A group compared with placebo group <br/> Death probability difference = -0.0047 <br/> Death probability ratio = 0.7834 <br/> |Null hypothesis (1) may not hold|
-|Null hypothesis (2)|In vitamin A treatment group <br/> Male subgroup compared with female subgroup <br/> Death probability difference = -0.0023 <br/> Death probability ratio = 0.8730|Null hypothesis (2) may not hold|
+|Null hypothesis (1)|Vitamin A group compared with placebo group <br/> Death probability difference = -0.0047 <br/> Death probability ratio = 0.7834 <br/> |Null hypothesis (1) may not hold, Vitamin A supplementation may have effect on mortality in Nepali pre-school children|
+|Null hypothesis (2)|In vitamin A treatment group <br/> Male subgroup compared with female subgroup <br/> Death probability difference = -0.0023 <br/> Death probability ratio = 0.8730|Null hypothesis (2) may not hold, sex may be an effect modifier for the association of treatment effect and mortality.|
 
 
 v. Consider a family with 3 boys and 2 girls who received placebo. Suppose that each
@@ -149,10 +151,12 @@ P(x = 3) = 0.00001
 vi. Use the Poisson approximation to the binomial distribution to recalculate probabilities of
 0, 1, 2 or 3 boys dying in problem v.
 
+
+$\mu$ = np = 3*0.0181 = 0.0543
 ```
-x ~ Pois(0.0181)
-P(x = 0) = 0.98206
-P(x = 1) = 0.01778
-P(x = 2) = 0.00016
-P(x = 3) = 0
+x ~ Pois(0.0543)
+P(x = 0) = 0.94715
+P(x = 1) = 0.05143
+P(x = 2) = 0.00140
+P(x = 3) = 0.00003
 ```

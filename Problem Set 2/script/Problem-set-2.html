@@ -172,7 +172,7 @@ pre code {
 
 
 <pre class="r"><code># Set up
-setwd(&quot;D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2/Problem set 2&quot;)</code></pre>
+setwd(&quot;D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 2&quot;)</code></pre>
 <div id="problem-1.-vitamin-a-supplementation-to-prevent-childrens-mortality-in-nepal" class="section level1">
 <h1>Problem 1. Vitamin A Supplementation to Prevent Children’s Mortality in Nepal</h1>
 <div id="section-1-probability-binomial-and-poisson-models" class="section level2">
@@ -180,24 +180,8 @@ setwd(&quot;D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods 
 <ol style="list-style-type: lower-roman">
 <li>The Nepal data set is located in the <code>csv</code> data file named <code>nepal621.csv</code>. Refer to your Class Dataset Code Book for the file format. Load the tidyverse with: <code>library(tidyverse)</code> Open the data set and name it <code>nepal621</code>. Construct a 2x2 contingency table of treatment (placebo or Vitamin A) against status (alive or dead) at sixteen months of follow-up. Calculate the rate of child mortality in Nepal for children receiving placebo; Vitamin A. Summarize the difference in mortality in a sentence as if for a journal.</li>
 </ol>
-<pre class="r"><code>require(tidyverse)</code></pre>
-<pre><code>## Loading required package: tidyverse</code></pre>
-<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
-<pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
-## v tibble  3.1.3     v dplyr   1.0.7
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   2.0.1     v forcats 0.5.1</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>nepal621 &lt;- read_csv(&quot;./data/nepal621.csv&quot;)</code></pre>
-<pre><code>## Rows: 27121 Columns: 4</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (4): sex, age, trt, status</code></pre>
-<pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>require(tidyverse)
+nepal621 &lt;- read_csv(&quot;./data/nepal621.csv&quot;)</code></pre>
 <pre class="r"><code>CT &lt;- table(nepal621$trt, nepal621$status)
 addmargins(CT)</code></pre>
 <pre><code>##          
@@ -275,7 +259,7 @@ addmargins(CT)</code></pre>
 
 The mortality probability is 0.0023 and 0.0072 lower in vitamin A treatment group compared with placebo group and the ratio is 0.8751 and 0.7155 in treatment group compared with placebo group, in male and female subgroups respectively, indicating treatment can reduce mortality probability.
 
-The mortality probability is 0.0024 higher in female subgroup compared with male subgroup, and the ratio is 1.1455 in female subgroup compared with male subgroup, in vitamin treatment group, indicating the effect of treatment apper to vary by sex; thus, sex iss an effect modifier for the effect of vitmain A on mortality.</code></pre>
+The mortality probability is 0.0024 higher in female subgroup compared with male subgroup, and the ratio is 1.1455 in female subgroup compared with male subgroup, in vitamin treatment group. Compared to the overall treatment group, the mortality probability is 0.0012 higher in female subgroup and 0.0011 lower in male subgroup, and the ratio is 1.0699 and 0.9340 for female and male subgroups respectively compared to the overall treatment group. These evidence indicates the effect of treatment appear to vary by sex; and, sex is an effect modifier for the effect of vitmain A on mortality.</code></pre>
 <ol start="4" style="list-style-type: lower-roman">
 <li>Summarize in a table and/or figure the evidence (data) relevant to the null hypotheses that:</li>
 </ol>
@@ -303,12 +287,12 @@ The mortality probability is 0.0024 higher in female subgroup compared with male
 <tr class="odd">
 <td align="center">Null hypothesis (1)</td>
 <td align="center">Vitamin A group compared with placebo group <br /> Death probability difference = -0.0047 <br /> Death probability ratio = 0.7834 <br /></td>
-<td align="center">Null hypothesis (1) may not hold</td>
+<td align="center">Null hypothesis (1) may not hold, Vitamin A supplementation may have effect on mortality in Nepali pre-school children</td>
 </tr>
 <tr class="even">
 <td align="center">Null hypothesis (2)</td>
 <td align="center">In vitamin A treatment group <br /> Male subgroup compared with female subgroup <br /> Death probability difference = -0.0023 <br /> Death probability ratio = 0.8730</td>
-<td align="center">Null hypothesis (2) may not hold</td>
+<td align="center">Null hypothesis (2) may not hold, sex may be an effect modifier for the association of treatment effect and mortality.</td>
 </tr>
 </tbody>
 </table>
@@ -323,11 +307,12 @@ P(x = 3) = 0.00001</code></pre>
 <ol start="6" style="list-style-type: lower-roman">
 <li>Use the Poisson approximation to the binomial distribution to recalculate probabilities of 0, 1, 2 or 3 boys dying in problem v.</li>
 </ol>
-<pre><code>x ~ Pois(0.0181)
-P(x = 0) = 0.98206
-P(x = 1) = 0.01778
-P(x = 2) = 0.00016
-P(x = 3) = 0</code></pre>
+<p><span class="math inline">\(\mu\)</span> = np = 3*0.0181 = 0.0543</p>
+<pre><code>x ~ Pois(0.0543)
+P(x = 0) = 0.94715
+P(x = 1) = 0.05143
+P(x = 2) = 0.00140
+P(x = 3) = 0.00003</code></pre>
 </div>
 </div>
 
