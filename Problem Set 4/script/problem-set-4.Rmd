@@ -1,0 +1,127 @@
+---
+title: "Problem Set 4 — my solution"
+author: "Zhengting (Johnathan) He"
+date: "2021/10/7"
+output: html_document
+---
+
+
+```{r "setup", include = FALSE}
+require("knitr")
+opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 4")
+```
+
+```{r}
+# Set up
+setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 4")
+require(gt)
+```
+
+
+# Problem Set 4: Confidence Intervals and Hypothesis Tests (with R)
+
+
+## Problem 1. The Possible Association between Particulate Air Pollution and Daily Mortality in Baltimore
+
+
+0. Load the tidyverse with: `library(tidyverse)` and import the data set and name it
+`balt621`. Also, don’t forget to open a script file in order to save your work.
+
+```{r}
+require(tidyverse)
+balt621 <- read_csv("./data/balt621.csv")
+```
+
+
+i. Stratify the daily mortality data into 4 groups by season using the season variable.
+Calculate the mean PM10 level and mean daily mortality by season.
+
+```{r}
+balt621 %>%
+    group_by(season) %>%
+    summarize(n_pm10 = sum(!is.na(pm10)),
+              mean_pm10 = mean(pm10, na.rm=TRUE),
+              n_mortality = sum(!is.na(death)),
+              mean_mortality = mean(death)) %>%
+    gt() %>%
+    tab_header(title = md("**Mean PM10 level and mean daily mortality by season**")) %>%
+    fmt_number(columns = c("mean_pm10", "mean_mortality"),
+               decimals = 2)
+```
+
+
+ii. For each of the four seasonal strata, stratify the days into 5 pollution (pm10) strata.
+
+```{r}
+pm10.season <- list() # Empty list for each seasonal strata
+
+for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
+    print(paste("#Strata of season", seas, sep = " "))
+    pm10.season[[seas]] <-
+        balt621 %>%
+        filter(season == seas) %>%
+        mutate(pm_group = cut(pm10,
+                              breaks =  quantile(.[, "pm10"],
+                                                 c(0, .2, .4, .6, .8, 1),
+                                                 na.rm = TRUE),
+                              labels = 1:5))
+    
+    print(table(pm10.season[[seas]]$pm_group))
+}
+```
+
+
+iii. Separately for your four seasonal strata, calculate the mean mortality in the lowest and
+highest of the five pollution strata.
+
+```{r, results = 'asis'}
+for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
+    pm10.season[[seas]] %>%
+        filter(pm_group == 1) %>%
+        summarize(mean = mean(death),
+                  sd = sd(death),
+                  n = n()) %>%
+        gt() %>%
+        tab_header(title = paste("Mean morality in the lowest pollution strata in", seas, sep = " ")) %>%
+        print()
+    
+    pm10.season[[seas]] %>%
+        filter(pm_group == 5) %>%
+        summarize(mean = mean(death),
+                  sd = sd(death),
+                  n = n()) %>%
+        gt() %>%
+        tab_header(title = paste("Mean morality in the highest pollution strata in", seas, sep = " ")) %>%
+        print()
+}
+```
+
+
+iv. Within each seasonal stratum, test the null hypothesis that the mean mortality is the same
+regardless of the pollution level by comparing the mean mortality in the lowest and
+highest pollution strata. *Given the large sample sizes, there is no need to pool the
+variances.*
+
+```{r}
+pm.season.15 <- list()
+
+for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
+    print(paste("# T-test of mean mortality in lowest and highest pollution strata in",
+                seas, sep = " "))
+    
+    pm.season.15[[seas]] <-
+        pm10.season[[seas]] %>%
+        filter(pm_group==1 | pm_group==5)
+    
+    print(t.test(death ~ pm_group, data = pm.season.15[[seas]], var.equal = FALSE))
+}
+```
+
+
+v. For each seasonal stratum, calculate by hand a 95% confidence interval for the true mean
+mortality difference between the lowest and highest pollution days. 
+
+
+
+
+

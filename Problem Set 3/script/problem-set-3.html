@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>140.621 Problem Set 3 — My Solution</title>
+
+  <meta property="description" itemprop="description" content="My Solution for 140.621 Problem Set 3"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-09-30"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-09-30"/>
+  <meta name="article:author" content="Zhengting (Johnathan) He"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="140.621 Problem Set 3 — My Solution"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="My Solution for 140.621 Problem Set 3"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="140.621 Problem Set 3 — My Solution"/>
+  <meta property="twitter:description" content="My Solution for 140.621 Problem Set 3"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["140.621 Problem Set 3 — My Solution"]},{"type":"character","attributes":{},"value":["My Solution for 140.621 Problem Set 3\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Zhengting (Johnathan) He"]},{"type":"character","attributes":{},"value":["Johns Hopkins Bloomberg School of Public Health"]},{"type":"character","attributes":{},"value":["https://www.jhsph.com/"]}]}]},{"type":"character","attributes":{},"value":["09-30-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["problem-set-3_files/anchor-4.2.2/anchor.min.js","problem-set-3_files/bowser-1.9.3/bowser.min.js","problem-set-3_files/distill-2.2.21/template.v2.js","problem-set-3_files/figure-html5/unnamed-chunk-10-1.png","problem-set-3_files/figure-html5/unnamed-chunk-10-2.png","problem-set-3_files/figure-html5/unnamed-chunk-11-1.png","problem-set-3_files/figure-html5/unnamed-chunk-2-1.png","problem-set-3_files/figure-html5/unnamed-chunk-3-1.png","problem-set-3_files/figure-html5/unnamed-chunk-9-1.png","problem-set-3_files/header-attrs-2.10/header-attrs.js","problem-set-3_files/jquery-1.11.3/jquery.min.js","problem-set-3_files/popper-2.6.0/popper.min.js","problem-set-3_files/tippy-6.2.7/tippy-bundle.umd.min.js","problem-set-3_files/tippy-6.2.7/tippy-light-border.css","problem-set-3_files/tippy-6.2.7/tippy.css","problem-set-3_files/tippy-6.2.7/tippy.umd.min.js","problem-set-3_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="problem-set-3_files/header-attrs-2.10/header-attrs.js"></script>
+  <script src="problem-set-3_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="problem-set-3_files/popper-2.6.0/popper.min.js"></script>
+  <link href="problem-set-3_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="problem-set-3_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="problem-set-3_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="problem-set-3_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="problem-set-3_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="problem-set-3_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="problem-set-3_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"140.621 Problem Set 3 — My Solution","description":"My Solution for 140.621 Problem Set 3","authors":[{"author":"Zhengting (Johnathan) He","authorURL":"#","affiliation":"Johns Hopkins Bloomberg School of Public Health","affiliationURL":"https://www.jhsph.com/","orcidID":""}],"publishedDate":"2021-09-30T00:00:00.000-04:00","citationText":"He, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>140.621 Problem Set 3 — My Solution</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>My Solution for 140.621 Problem Set 3</p></p>
+</div>
+
+<div class="d-byline">
+  Zhengting (Johnathan) He  (Johns Hopkins Bloomberg School of Public Health)<a href="https://www.jhsph.com/" class="uri">https://www.jhsph.com/</a>
+  
+<br/>09-30-2021
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#problem-1.-a-survey-of-health-risk-behaviors-among-hopkins-biostatistics-students">Problem 1. A Survey of Health Risk Behaviors among Hopkins Biostatistics Students</a>
+<ul>
+<li><a href="#section-gaussian-distribution-for-body-mass-index">Section: Gaussian Distribution for Body Mass Index</a></li>
+</ul></li>
+<li><a href="#problem-2.-sampling-distributions">Problem 2. Sampling Distributions</a></li>
+</ul>
+</nav>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Set working directory and load packages</span>
+<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 3"</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="problem-1.-a-survey-of-health-risk-behaviors-among-hopkins-biostatistics-students">Problem 1. A Survey of Health Risk Behaviors among Hopkins Biostatistics Students</h2>
+<h3 id="section-gaussian-distribution-for-body-mass-index">Section: Gaussian Distribution for Body Mass Index</h3>
+<ol type="i">
+<li>The class data set is located in the <code>csv</code> data file named <code>2019class621.csv</code>. Refer to your Class Dataset Code Book for the file format. Load the tidyverse with: <code>library(tidyverse)</code> Open the data set and name it <code>class621</code> (remember, you can’t start an object with a number!) And, don’t forget to open a script file in order to save your work. Use weight in pounds and height in inches to calculate BMI for all persons in the class. Recall that there may be misreported values of height or weight in this data set that could affect the calculation of BMI. Explore the dataset for unusual values, decide how to handle them, implement your decision, and explain what you did and why in a sentence or two.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Import dataset</span>
+<span class='va'>class621</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"./data/2019class6211.csv"</span><span class='op'>)</span>
+
+<span class='co'># Boxplot for height and weight</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>class621</span><span class='op'>$</span><span class='va'>height</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span><span class='op'>(</span><span class='va'>class621</span><span class='op'>$</span><span class='va'>weight</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Filter outliers for height and weight</span>
+<span class='va'>class621</span> <span class='op'>&lt;-</span> <span class='va'>class621</span> <span class='op'>%&gt;%</span>
+                <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>height</span> <span class='op'>&gt;=</span> <span class='fl'>55</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>&lt;=</span> <span class='fl'>300</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                <span class='fu'>mutate</span><span class='op'>(</span>bmi <span class='op'>=</span> <span class='op'>(</span><span class='va'>weight</span> <span class='op'>/</span> <span class='va'>height</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>704.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<blockquote>
+Observations with <strong>height less than 55</strong> inches or <strong>weight more than 300 pounds</strong> were dropped from the dataset. According to the boxplot of the height values, though several outliers have been found more than the upper fence, they seem to be close to each other on the distribution, and also within possible range according to normal sense; however, the <strong>outlier identified less than the lower fence</strong> independently distributed far away at the lower tail, and also not likely to be within the possible range according to normal sense — thus, threshold for height is setted as <strong>higher than 55 inches</strong>. Similarly, no outlier was identified less than the lower fence for weight, while for outliers identified more than the upper fence, all outliers seem to be close to each other on the distribution and also within possible range according to normal sense, <strong>except for the highest (extreme) value</strong> — thus, threshold for weight is setted as <strong>more than 300 pounds</strong>.
+</blockquote>
+<ol start="2" type="i">
+<li>Separately for males and females, make a stem and leaf plot of the BMI values. Calculate the mean and standard deviation of the body mass indices for each of the two sex groups. For the moment, suspend reality and assume that the body mass index distribution is reasonably approximated by a normal (also called Gaussian) distribution. Separately for each sex, calculate an interval that would include the middle half of individuals under the normal assumption. This is done by taking the mean plus or minus the appropriate number of standard deviations. Now repeat the calculation to obtain an interval that would include the middle 95% of the males (females) for a normal distribution.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>class.sex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='kw'>for</span><span class='op'>(</span><span class='va'>sexmf</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='co'># Print subgroup info for for loop output</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>sexmf</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"# Result for Male Subgroup"</span>, <span class='st'>"# Result for Female Subgroup"</span><span class='op'>)</span><span class='op'>)</span>
+  
+    <span class='co'># Filter observations and summary statistics</span>
+    <span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>class621</span> <span class='op'>%&gt;%</span>
+                              <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>sex</span> <span class='op'>==</span> <span class='va'>sexmf</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/graphics/stem.html'>stem</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>%&gt;%</span>
+               <span class='fu'>summarise</span><span class='op'>(</span>mean.bmi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bmi</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+                         sd.bmi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>bmi</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;# Result for Male Subgroup&quot;
+
+  The decimal point is 1 digit(s) to the right of the |
+
+  1 | 88999
+  2 | 000000111111122222222333444444444444
+  2 | 555555555666677777777888999999
+  3 | 000001113
+  3 | 558
+  4 | 
+  4 | 
+  5 | 
+  5 | 6
+
+NULL
+# A tibble: 1 x 2
+  mean.bmi sd.bmi
+     &lt;dbl&gt;  &lt;dbl&gt;
+1     25.5   5.28
+[1] &quot;# Result for Female Subgroup&quot;
+
+  The decimal point is at the |
+
+  16 | 9
+  17 | 01334556889
+  18 | 033455556668999
+  19 | 000001112222333344455566788888889
+  20 | 00000011122223344445566667778888889999
+  21 | 0000000011222233334555555555556777888888
+  22 | 000122223344566667777788999999999
+  23 | 012222333333345555567777778889
+  24 | 0011112223333445799
+  25 | 02234444456678899999
+  26 | 124677778
+  27 | 345555
+  28 | 004448
+  29 | 238
+  30 | 133578
+  31 | 5
+  32 | 12
+  33 | 89
+  34 | 
+  35 | 06
+  36 | 7
+  37 | 48
+
+NULL
+# A tibble: 1 x 2
+  mean.bmi sd.bmi
+     &lt;dbl&gt;  &lt;dbl&gt;
+1     22.8   3.73</code></pre>
+</div>
+<blockquote>
+<ul>
+<li><p>Interval include the middle half of individuals under the normal assumption</p>
+<ul>
+<li>Male subgroup: Since <span class="math inline">\(P(Z&gt;0.6745)=0.25\)</span>, the interval would be <strong>[21.90, 29.02]</strong> under the following calculation</li>
+</ul>
+<p><span class="math display">\[
+-0.6745 &lt; \frac{X - 25.46}{5.28} &lt; 0.6745
+\]</span></p>
+<p><span class="math display">\[
+21.90 &lt; X &lt; 29.02
+\]</span></p>
+<ul>
+<li>Female subgroup: Similarly, since <span class="math inline">\(P(Z&gt;0.6745)=0.25\)</span>, the interval would be <strong>[20.24, 25.28]</strong> under the following calculation</li>
+</ul>
+<p><span class="math display">\[
+-0.6745 &lt; \frac{X - 22.76}{3.73} &lt; 0.6745
+\]</span></p>
+<p><span class="math display">\[
+20.24 &lt; X &lt; 25.28
+\]</span></p></li>
+<li><p>Interval include the middle 95% of the individuals for a normal distribution</p>
+<ul>
+<li>Male subgroup: Since <span class="math inline">\(P(Z&gt;1.96)=0.025\)</span>, the interval would be <strong>[15.11, 35.80]</strong> under the following calculation</li>
+</ul>
+<p><span class="math display">\[
+- 1.96 &lt; \frac{X - 25.46}{5.28} &lt; 1.96
+\]</span></p>
+<p><span class="math display">\[
+15.11 &lt; X &lt; 35.80
+\]</span></p>
+<ul>
+<li>Female subgroup: Similarly, since <span class="math inline">\(P(Z&gt;1.96)=0.025\)</span>, the interval would be <strong>[15.45, 30.07]</strong> under the following calculation</li>
+</ul>
+<p><span class="math display">\[
+- 1.96 &lt; \frac{X - 22.76}{3.73} &lt; 1.96
+\]</span></p>
+<p><span class="math display">\[
+15.45 &lt; X &lt; 30.07
+\]</span></p>
+<p>The results can be varified by the following code:</p></li>
+</ul>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">  <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.25</span>, <span class='fl'>0.75</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>25.46</span>, sd <span class='op'>=</span> <span class='fl'>5.28</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 21.89869 29.02131</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">  <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.25</span>, <span class='fl'>0.75</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>22.76</span>, sd <span class='op'>=</span> <span class='fl'>3.73</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 20.24415 25.27585</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">  <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>25.46</span>, sd <span class='op'>=</span> <span class='fl'>5.28</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 15.11139 35.80861</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r">  <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.025</span>, <span class='fl'>0.975</span><span class='op'>)</span>, mean <span class='op'>=</span> <span class='fl'>22.76</span>, sd <span class='op'>=</span> <span class='fl'>3.73</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 15.44933 30.07067</code></pre>
+</div>
+<ol start="3" type="i">
+<li>Now determine from the data, intervals that actually contain the middle 50, 95, and 99% of the male (female) BMI values. Compare your empirical intervals with the ones based upon the normal assumption.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'>for</span><span class='op'>(</span><span class='va'>sexmf</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='co'># Print subgroup info for for loop output</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>sexmf</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"# Result for Male Subgroup"</span>, <span class='st'>"# Result for Female Subgroup"</span><span class='op'>)</span><span class='op'>)</span>
+  
+    <span class='co'># Filter observations and summary statistics</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span>,
+                   <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.005</span>, <span class='fl'>.025</span>, <span class='fl'>.25</span>, <span class='fl'>.75</span>, <span class='fl'>.975</span>, <span class='fl'>.995</span><span class='op'>)</span>,
+                   na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;# Result for Male Subgroup&quot;
+    0.5%     2.5%      25%      75%    97.5%    99.5% 
+18.08349 18.99274 21.78709 27.54227 34.90693 48.80555 
+[1] &quot;# Result for Female Subgroup&quot;
+    0.5%     2.5%      25%      75%    97.5%    99.5% 
+17.01424 17.54282 20.15912 24.24067 32.22663 37.07590 </code></pre>
+</div>
+<blockquote>
+<ul>
+<li><p>Interval include the middle half of individuals under the normal assumption</p>
+<ul>
+<li>For both male and female subgroups, the <strong>lower bound</strong> of the interval <strong>upon normal assumption is slightly higher than the empirical interval</strong>, while the <strong>upper bound</strong> of the interval <strong>upon normal assumption is higher than the empirical interval</strong>.</li>
+</ul></li>
+<li><p>Interval include the middle 95% of the individuals for a normal distribution</p>
+<ul>
+<li><p>For male subgroup, the <strong>lower bound</strong> of the interval <strong>upon normal assumption is lower than the empirical interval</strong>, while the <strong>upper bound</strong> of the interval <strong>upon normal assumption is higher than the empirical interval</strong>.</p></li>
+<li><p>For female subgroup, both the <strong>lower bound and higher bound</strong> of the interval <strong>upon normal assumption is lower than the empirical interval</strong>.</p></li>
+</ul></li>
+</ul>
+</blockquote>
+<ol start="4" type="i">
+<li>In a sentence or two, describe how the sample distribution for males and females differ (or not) from what we expect under a normal distribution.</li>
+</ol>
+<blockquote>
+Compared to the normal distribution with same mean and standard deviation, the distribution of both male subgroup and female subgroup is <strong>right-skewed</strong>. The distribution of male subgroup also has a fatter tail on both sides compared to the normal distribution, and the distribution of female subgroup has a fatter tail on left side compared to the normal distribution.
+</blockquote>
+<ol start="22" type="a">
+<li>Still assuming a normal distribution, use the sample means and standard deviations to calculate the probability of a BMI&lt;25, between 25-29.9 kg/m2 , and 30 or more kg/m2 . In a table, compare the model based results with the actual sample values separately for males and females.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'>for</span><span class='op'>(</span><span class='va'>sexmf</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='co'># Print subgroup info for for loop output</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>sexmf</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"# Result for Male Subgroup"</span>, <span class='st'>"# Result for Female Subgroup"</span><span class='op'>)</span><span class='op'>)</span>
+  
+    <span class='co'># Normal assumption</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"## Under normal assumption"</span><span class='op'>)</span>
+  
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI &lt; 25: "</span>,
+                <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='fl'>25</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span><span class='op'>)</span>,
+                sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI between 25-29.9: "</span>,
+                 <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='fl'>29.9</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-</span>
+                 <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='fl'>25</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span><span class='op'>)</span>,
+                 sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI &gt;= 30: "</span>,
+                <span class='fl'>1</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='fl'>30</span>, mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span><span class='op'>)</span>,
+                sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='co'># Actual sample value</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"## Actual sample value"</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI &lt; 25: "</span>,
+                <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span>, <span class='va'>bmi</span> <span class='op'>&lt;</span> <span class='fl'>25</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>,
+                sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI between 25-29.9: "</span>,
+                <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span>, <span class='fl'>25</span> <span class='op'>&lt;=</span> <span class='va'>bmi</span> <span class='op'>&amp;</span> <span class='va'>bmi</span> <span class='op'>&lt;=</span> <span class='fl'>29.9</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>,
+                sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='st'>"### Probability of BMI &gt;= 30: "</span>,
+                <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span>, <span class='va'>bmi</span> <span class='op'>&gt;=</span> <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>,
+                sep <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;# Result for Male Subgroup&quot;
+[1] &quot;## Under normal assumption&quot;
+[1] &quot;### Probability of BMI &lt; 25: 0.465353364809384&quot;
+[1] &quot;### Probability of BMI between 25-29.9: 0.334508912956873&quot;
+[1] &quot;### Probability of BMI &gt;= 30: 0.194875251835184&quot;
+[1] &quot;## Actual sample value&quot;
+[1] &quot;### Probability of BMI &lt; 25: 0.511904761904762&quot;
+[1] &quot;### Probability of BMI between 25-29.9: 0.369047619047619&quot;
+[1] &quot;### Probability of BMI &gt;= 30: 0.119047619047619&quot;
+[1] &quot;# Result for Female Subgroup&quot;
+[1] &quot;## Under normal assumption&quot;
+[1] &quot;### Probability of BMI &lt; 25: 0.725914635659661&quot;
+[1] &quot;### Probability of BMI between 25-29.9: 0.246289734552271&quot;
+[1] &quot;### Probability of BMI &gt;= 30: 0.0261269029218221&quot;
+[1] &quot;## Actual sample value&quot;
+[1] &quot;### Probability of BMI &lt; 25: 0.785714285714286&quot;
+[1] &quot;### Probability of BMI between 25-29.9: 0.157142857142857&quot;
+[1] &quot;### Probability of BMI &gt;= 30: 0.0571428571428571&quot;</code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Probability</th>
+<th style="text-align: center;">Model based results</th>
+<th style="text-align: center;">Actual sample values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">BMI &lt; 25</td>
+<td style="text-align: center;">0.4654</td>
+<td style="text-align: center;">0.5119</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">BMI between 25-29.9</td>
+<td style="text-align: center;">0.3345</td>
+<td style="text-align: center;">0.3690</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Male</td>
+<td style="text-align: center;">BMI &gt;= 30</td>
+<td style="text-align: center;">0.1949</td>
+<td style="text-align: center;">0.1190</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">BMI &lt; 25</td>
+<td style="text-align: center;">0.7259</td>
+<td style="text-align: center;">0.7857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">BMI between 25-29.9</td>
+<td style="text-align: center;">0.2463</td>
+<td style="text-align: center;">0.1571</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Female</td>
+<td style="text-align: center;">BMI &gt;= 30</td>
+<td style="text-align: center;">0.0261</td>
+<td style="text-align: center;">0.0571</td>
+</tr>
+</tbody>
+</table>
+<ol start="6" type="i">
+<li>Make a quantile-normal plot of the class BMI (vertical axis) versus the expected quantiles for a normal distribution. Find the median and quartiles of the data on this graph. Comment on the shape of the BMI distribution relative to a Gaussian (normal) distribution.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqnorm</a></span><span class='op'>(</span><span class='va'>class621</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqline</a></span><span class='op'>(</span><span class='va'>class621</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>
+
+<span class='co'>#Adding gridlines at median and Q1/Q3</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>h<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>class621</span><span class='op'>$</span><span class='va'>bmi</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.25</span>,<span class='fl'>.5</span>,<span class='fl'>.75</span><span class='op'>)</span>, na.rm<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>, lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.25</span>,<span class='fl'>.5</span>,<span class='fl'>.75</span><span class='op'>)</span><span class='op'>)</span>, lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<blockquote>
+The median of bmi is approximately 23, while the 1st and 3rd quartile of bmi is approximately 20.5 and 25.5, respectively. Relative to a Gaussian (normal) distribution, the shape of the BMI distribution is <strong>right-skewed</strong>.
+</blockquote>
+<ol start="7" type="i">
+<li>Make a quantile-normal plot of the class BMI (vertical axis) versus the expected quantiles for a normal distribution for each sex. Compare your findings.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'>for</span><span class='op'>(</span><span class='va'>sexmf</span> <span class='kw'>in</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='co'># Print subgroup info for for loop output</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>sexmf</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"# Result for Male Subgroup"</span>, <span class='st'>"# Result for Female Subgroup"</span><span class='op'>)</span><span class='op'>)</span>
+    
+    <span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqnorm</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>; <span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqline</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>h<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/quantile.html'>quantile</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='va'>sexmf</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.25</span>,<span class='fl'>.5</span>,<span class='fl'>.75</span><span class='op'>)</span>, na.rm<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>, lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>.25</span>,<span class='fl'>.5</span>,<span class='fl'>.75</span><span class='op'>)</span><span class='op'>)</span>, lty<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;# Result for Male Subgroup&quot;</code></pre>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+<pre><code>[1] &quot;# Result for Female Subgroup&quot;</code></pre>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-10-2.png" width="624" /></p>
+</div>
+<blockquote>
+For both male and female subgroup, the middle 50% of observations seem to line up with the expected values from a normal distribution, while the quartiles in both tails are higher than that of the expected values, with more outliers in the right tail, indicating the distribution of both male and female subgroup is <strong>right-skewed</strong>.
+</blockquote>
+<ol start="8" type="i">
+<li>Make a quantile-quantile plot or Q-Q plot of the class BMI for males (vertical axis) versus the class BMI for females. What do you observe?</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/qqnorm.html'>qqplot</a></span><span class='op'>(</span><span class='va'>class.sex</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span>, <span class='va'>class.sex</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>bmi</span>, xlim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>40</span><span class='op'>)</span>, ylim<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>,<span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>a<span class='op'>=</span><span class='fl'>0</span>, b<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="problem-set-3_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<blockquote>
+Compared to female (x-axis), for all possible quartiles, the values of bmi are all higher in male subgroup compared with female subgroup, indicating that <strong>males tend to have a higher bmi compared to females</strong>.
+</blockquote>
+<h2 id="problem-2.-sampling-distributions">Problem 2. Sampling Distributions</h2>
+<ol type="i">
+<li><p>Getting started: Go to the following web site: <a href="http://onlinestatbook.com/stat_sim/sampling_dist/index.html" class="uri">http://onlinestatbook.com/stat_sim/sampling_dist/index.html</a> You will use the applet to generate random numbers from a true population distribution, here the uniform distribution on the interval (0, 33) When the page comes up, wait for the “Begin” button to appear. Click “Begin” to open the site. When the site (“applet”) opens, notice that there are 4 sections with graphs labeled “Parent Population”, “Sample Data”, “Distribution of Means” and a fourth graph that is not labeled. Click on the menu at the upper right (“Normal”) in the first section, and select “Uniform.” Notice how the shape of the graph labeled “Parent Population” changes. Below, where it says “N=5” (under “Mean”), click the menu and change the selection to “N=2.”Now you are ready to do the next step ii.</p></li>
+<li><p>Means of samples of size n=2: In the second panel, on the right side click “100,000.” This will generate 100,000 samples (simulating all possible samples) of two random waiting times (n=2). The third graph labeled “Distribution of Means,” will then form a histogram of the mean values from those samples. Describe the shape of the histogram of means recorded by the applet in the third graph. Record and report the mean and standard deviation of the distribution of means for n=2 in the table in part v.</p></li>
+</ol>
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution with a mean of 16.04, median of 16.00, and standard deviation of 6.75.
+</blockquote>
+<ol start="3" type="i">
+<li>Means of samples of size n=5: Now, go to the top section and click “Clear lower 3”. Then, click the menu “N=2” in the third section and change it to “N=5”. In the second panel, on the right side, click “100,000.” This will generate 100,000 samples (simulating all possible samples) of five random waiting times (n=5). The third graph labeled “Distribution of Means,” will then form a histogram of the mean values from those samples. Again, describe the shape of the distribution of means given by the applet in the third graph. Record and report the mean and standard deviation of the distribution of means for n=5 in the table in part v.</li>
+</ol>
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution, which tail is relatively fatter compared with ii., with a mean of 16.02, median of 16.00, and standard deviation of 4.26.
+</blockquote>
+<ol start="4" type="i">
+<li>Means of samples of size n=25: Go to the top section and click “Clear lower 3” one more time. Then change “N=5” to “N=25” in the third section. In the second panel, on the right side, click “100,000.” This will generate 100,000 samples (simulating all possible samples) of twenty-five random waiting times (n=25). The third graph, labeled “Distribution of Means,” will then form a histogram of the mean values from those samples.</li>
+</ol>
+<p>Once more, describe the shape of the distribution of means given by the applet. Record and report the mean and standard deviation of the distribution of means for n=25 in the table in part v below.</p>
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution, which tail is relatively fatter compared with iii., with a mean of 16.00, median of 16.00, and standard deviation of 1.91.
+</blockquote>
+<ol start="22" type="a">
+<li>The population distribution from which you’ve been sampling has mean=16 and variance 90. Complete the table below with the estimated means and standard deviations of the sampling distribution that you obtained from your 100,000 replicates (simulating all possible samples) in parts ii-iv above and with the known theoretical values given by the Central Limit Theorem.</li>
+</ol>
+<table>
+<tr>
+<th>
+Sample Size
+</th>
+<th colspan="2">
+Observed Statistics for 100,000 Replicates
+</th>
+<th colspan="2">
+Theoretical Values for Infinite Replicates
+</th>
+<tr>
+<th>
+(n)
+</th>
+<th>
+Mean
+</th>
+<th>
+Standard Deviation
+</th>
+<th>
+Mean
+</th>
+<th>
+Standard Deviation
+</th>
+<tr>
+<td>
+2
+</td>
+<td>
+16.04
+</td>
+<td>
+6.75
+</td>
+<td>
+16.00
+</td>
+<td>
+6.71
+</td>
+</tr>
+<tr>
+<td>
+5
+</td>
+<td>
+16.02
+</td>
+<td>
+4.26
+</td>
+<td>
+16.00
+</td>
+<td>
+4.24
+</td>
+</tr>
+<tr>
+<td>
+25
+</td>
+<td>
+16.00
+</td>
+<td>
+1.91
+</td>
+<td>
+16.00
+</td>
+<td>
+1.90
+</td>
+</tr>
+<tr>
+<td>
+100
+</td>
+<td>
+NA
+</td>
+<td>
+NA
+</td>
+<td>
+16.00
+</td>
+<td>
+0.95
+</td>
+</tr>
+</table>
+<ol start="6" type="i">
+<li>In a few sentences, explain how far the sample means tend to be from the true population mean and how the deviation depends on the population variance and sample size. State the Central Limit Theorem in your own words.</li>
+</ol>
+<blockquote>
+With sample size larger, the sample means tend to be more close to the true population mean. The deviation of the sample mean depends on the population variance and sample size, i.e., with population variance lower, the deviation of the sample means tend to be lower; and, with sample size larger, the deviation of the sample means tend to be lower. The Central Limit Theorem in my own words is, even though the population distribution may not be normal, given the sample size is large, the mean of the sample means will still equal to the true population mean, and the variance of the sample means will still equall to the population variance devided by the sample size, and the distribution of sample means will still approximate to normal distribution.
+</blockquote>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

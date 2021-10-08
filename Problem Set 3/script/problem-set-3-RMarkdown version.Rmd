@@ -1,0 +1,398 @@
+---
+title: '140.621 Problem Set 3 — My Solution'
+description: |
+  My Solution for 140.621 Problem Set 3
+author:
+  - name: Zhengting (Johnathan) He 
+    affiliation: Johns Hopkins Bloomberg School of Public Health
+    affiliation_url: https://www.jhsph.com/
+date: "09-30-2021"
+output: html_document
+---
+
+
+```{css}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+```
+
+```{r "setup", include = FALSE}
+require("knitr")
+opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 3")
+```
+
+
+```{r, message = FALSE}
+# Set working directory and load packages
+setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 3")
+require(tidyverse)
+```
+
+
+## Problem 1. A Survey of Health Risk Behaviors among Hopkins Biostatistics Students
+
+
+### Section: Gaussian Distribution for Body Mass Index
+
+
+i. The class data set is located in the `csv` data file named `2019class621.csv`. Refer to 
+your Class Dataset Code Book for the file format. Load the tidyverse with: 
+`library(tidyverse)` Open the data set and name it `class621` (remember, you 
+can’t start an object with a number!) And, don’t forget to open a script file in order to 
+save your work. Use weight in pounds and height in inches to calculate BMI for all 
+persons in the class. Recall that there may be misreported values of height or weight in 
+this data set that could affect the calculation of BMI. Explore the dataset for unusual 
+values, decide how to handle them, implement your decision, and explain what you did 
+and why in a sentence or two.
+
+```{r}
+# Import dataset
+class621 <- read_csv("./data/2019class6211.csv")
+
+# Boxplot for height and weight
+boxplot(class621$height)
+```
+
+```{r}
+boxplot(class621$weight)
+```
+
+```{r}
+# Filter outliers for height and weight
+class621 <- class621 %>%
+                filter(height >= 55) %>%
+                filter(weight <= 300) %>%
+                mutate(bmi = (weight / height^2) * 704.5)
+```
+
+
+<blockquote>
+Observations with **height less than 55** inches or **weight more than 300 pounds** were dropped from the dataset. According to the boxplot of the height values, though several outliers have been found more than the upper fence, they seem to be close to each other on the distribution, and also within possible range according to normal sense; however, the **outlier identified less than the lower fence** independently distributed far away at the lower tail, and also not likely to be within the possible range according to normal sense — thus, threshold for height is setted as **higher than 55 inches**. Similarly, no outlier was identified less than the lower fence for weight, while for outliers identified more than the upper fence, all outliers seem to be close to each other on the distribution and also within possible range according to normal sense, **except for the highest (extreme) value** — thus, threshold for weight is setted as **more than 300 pounds**.
+</blockquote>
+
+
+ii. Separately for males and females, make a stem and leaf plot of the BMI values. Calculate 
+the mean and standard deviation of the body mass indices for each of the two sex groups. 
+For the moment, suspend reality and assume that the body mass index distribution is 
+reasonably approximated by a normal (also called Gaussian) distribution. Separately for 
+each sex, calculate an interval that would include the middle half of individuals under the 
+normal assumption. This is done by taking the mean plus or minus the appropriate 
+number of standard deviations. Now repeat the calculation to obtain an interval that 
+would include the middle 95% of the males (females) for a normal distribution.
+
+```{r}
+class.sex <- list()
+for(sexmf in c(1, 2)) {
+    # Print subgroup info for for loop output
+    print(ifelse(sexmf == 1, "# Result for Male Subgroup", "# Result for Female Subgroup"))
+  
+    # Filter observations and summary statistics
+    class.sex[[sexmf]] <- class621 %>%
+                              filter(sex == sexmf)
+    
+    print(stem(class.sex[[sexmf]]$bmi))
+    
+    print(class.sex[[sexmf]] %>%
+               summarise(mean.bmi = mean(bmi, na.rm = TRUE),
+                         sd.bmi = sd(bmi, na.rm = TRUE)))
+}
+```
+
+
+<blockquote>
++ Interval include the middle half of individuals under the normal assumption
+
+  - Male subgroup: Since $P(Z>0.6745)=0.25$, the interval would be **[21.90, 29.02]** under the following calculation
+  
+  $$
+  -0.6745 < \frac{X - 25.46}{5.28} < 0.6745
+  $$
+  
+  $$
+  21.90 < X < 29.02
+  $$
+  
+  - Female subgroup: Similarly, since $P(Z>0.6745)=0.25$, the interval would be **[20.24, 25.28]** under the following calculation
+  
+  $$
+  -0.6745 < \frac{X - 22.76}{3.73} < 0.6745
+  $$
+  
+  $$
+  20.24 < X < 25.28
+  $$
+  
++ Interval include the middle 95% of the individuals for a normal distribution
+
+  - Male subgroup: Since $P(Z>1.96)=0.025$, the interval would be **[15.11, 35.80]** under the following calculation
+  
+  $$
+  - 1.96 < \frac{X - 25.46}{5.28} < 1.96
+  $$
+  
+  $$
+  15.11 < X < 35.80
+  $$
+  
+  - Female subgroup: Similarly, since $P(Z>1.96)=0.025$, the interval would be **[15.45, 30.07]** under the following calculation
+  
+  $$
+  - 1.96 < \frac{X - 22.76}{3.73} < 1.96
+  $$
+  
+  $$
+  15.45 < X < 30.07
+  $$
+  
+  The results can be varified by the following code:
+</blockquote>
+
+```{r}
+  qnorm(c(0.25, 0.75), mean = 25.46, sd = 5.28)
+  qnorm(c(0.25, 0.75), mean = 22.76, sd = 3.73)
+  qnorm(c(0.025, 0.975), mean = 25.46, sd = 5.28)
+  qnorm(c(0.025, 0.975), mean = 22.76, sd = 3.73)
+```
+
+
+iii. Now determine from the data, intervals that actually contain the middle 50, 95, and 99% 
+of the male (female) BMI values. Compare your empirical intervals with the ones based 
+upon the normal assumption. 
+
+```{r}
+for(sexmf in c(1, 2)) {
+    # Print subgroup info for for loop output
+    print(ifelse(sexmf == 1, "# Result for Male Subgroup", "# Result for Female Subgroup"))
+  
+    # Filter observations and summary statistics
+    print(quantile(class.sex[[sexmf]]$bmi,
+                   c(.005, .025, .25, .75, .975, .995),
+                   na.rm = TRUE))
+}
+```
+
+<blockquote>
++ Interval include the middle half of individuals under the normal assumption
+
+  - For both male and female subgroups, the **lower bound** of the interval **upon normal assumption is slightly higher than the empirical interval**, while the **upper bound** of the interval **upon normal assumption is higher than the empirical interval**.
+  
++ Interval include the middle 95% of the individuals for a normal distribution
+
+  - For male subgroup, the **lower bound** of the interval **upon normal assumption is lower than the empirical interval**, while the **upper bound** of the interval **upon normal assumption is higher than the empirical interval**.
+  
+  - For female subgroup, both the **lower bound and higher bound** of the interval **upon normal assumption is lower than the empirical interval**.
+</blockquote>
+
+
+iv. In a sentence or two, describe how the sample distribution 
+for males and females differ (or not) from what we expect under a normal distribution.
+
+<blockquote>
+Compared to the normal distribution with same mean and standard deviation, the distribution of both male subgroup and female subgroup is **right-skewed**. The distribution of male subgroup also has a fatter tail on both sides compared to the normal distribution, and the distribution of female subgroup has a fatter tail on left side compared to the normal distribution.
+</blockquote>
+
+
+v. Still assuming a normal distribution, use the sample means and standard deviations to 
+calculate the probability of a BMI<25, between 25-29.9 kg/m2
+, and 30 or more kg/m2
+. In 
+a table, compare the model based results with the actual sample values separately for 
+males and females.
+
+```{r}
+for(sexmf in c(1, 2)) {
+    # Print subgroup info for for loop output
+    print(ifelse(sexmf == 1, "# Result for Male Subgroup", "# Result for Female Subgroup"))
+  
+    # Normal assumption
+    print("## Under normal assumption")
+  
+    print(paste("### Probability of BMI < 25: ",
+                pnorm(25, mean = mean(class.sex[[sexmf]]$bmi), sd = sd(class.sex[[sexmf]]$bmi)),
+                sep = ""))
+    
+    print(paste("### Probability of BMI between 25-29.9: ",
+                 pnorm(29.9, mean = mean(class.sex[[sexmf]]$bmi), sd = sd(class.sex[[sexmf]]$bmi)) -
+                 pnorm(25, mean = mean(class.sex[[sexmf]]$bmi), sd = sd(class.sex[[sexmf]]$bmi)),
+                 sep = ""))
+    
+    print(paste("### Probability of BMI >= 30: ",
+                1 - pnorm(30, mean = mean(class.sex[[sexmf]]$bmi), sd = sd(class.sex[[sexmf]]$bmi)),
+                sep = ""))
+    
+    # Actual sample value
+    print("## Actual sample value")
+    
+    print(paste("### Probability of BMI < 25: ",
+                nrow(filter(class.sex[[sexmf]], bmi < 25)) / nrow(class.sex[[sexmf]]),
+                sep = ""))
+    
+    print(paste("### Probability of BMI between 25-29.9: ",
+                nrow(filter(class.sex[[sexmf]], 25 <= bmi & bmi <= 29.9)) / nrow(class.sex[[sexmf]]),
+                sep = ""))
+    
+    print(paste("### Probability of BMI >= 30: ",
+                nrow(filter(class.sex[[sexmf]], bmi >= 30)) / nrow(class.sex[[sexmf]]),
+                sep = ""))
+}
+```
+
+| |Probability|Model based results|Actual sample values|
+|:--:|:--:|:--:|:--:|
+|Male|BMI < 25|0.4654|0.5119|
+|Male|BMI between 25-29.9|0.3345|0.3690|
+|Male|BMI >= 30|0.1949|0.1190|
+|Female|BMI < 25|0.7259|0.7857|
+|Female|BMI between 25-29.9|0.2463|0.1571|
+|Female|BMI >= 30|0.0261|0.0571|
+
+
+vi. Make a quantile-normal plot of the class BMI (vertical axis) versus the expected 
+quantiles for a normal distribution. Find the median and quartiles of the data on this 
+graph. Comment on the shape of the BMI distribution relative to a Gaussian (normal) 
+distribution.
+
+```{r}
+qqnorm(class621$bmi)
+qqline(class621$bmi)
+
+#Adding gridlines at median and Q1/Q3
+abline(h=quantile(class621$bmi, c(.25,.5,.75), na.rm=TRUE), lty=2)
+abline(v=qnorm(c(.25,.5,.75)), lty=2)
+```
+
+<blockquote>
+The median of bmi is approximately 23, while the 1st and 3rd quartile of bmi is approximately 20.5 and 25.5, respectively. Relative to a Gaussian (normal) distribution, the shape of the BMI distribution is **right-skewed**.
+</blockquote>
+
+
+vii. Make a quantile-normal plot of the class BMI (vertical axis) versus the expected 
+quantiles for a normal distribution for each sex. Compare your findings.
+
+```{r}
+for(sexmf in c(1, 2)) {
+    # Print subgroup info for for loop output
+    print(ifelse(sexmf == 1, "# Result for Male Subgroup", "# Result for Female Subgroup"))
+    
+    qqnorm(class.sex[[sexmf]]$bmi); qqline(class.sex[[sexmf]]$bmi)
+    abline(h=quantile(class.sex[[sexmf]]$bmi, c(.25,.5,.75), na.rm=TRUE), lty=2)
+    abline(v=qnorm(c(.25,.5,.75)), lty=2)
+}
+```
+
+<blockquote>
+For both male and female subgroup, the middle 50% of observations seem to line up with the expected values from a normal distribution, while the quartiles in both tails are higher than that of the expected values, with more outliers in the right tail, indicating the distribution of both male and female subgroup is **right-skewed**.
+</blockquote>
+
+viii. Make a quantile-quantile plot or Q-Q plot of the class BMI for males (vertical axis) 
+versus the class BMI for females. What do you observe?
+
+```{r}
+qqplot(class.sex[[2]]$bmi, class.sex[[1]]$bmi, xlim=c(5,40), ylim=c(5,40))
+abline(a=0, b=1)
+```
+
+<blockquote>
+Compared to female (x-axis), for all possible quartiles, the values of bmi are all higher in male subgroup compared with female subgroup, indicating that **males tend to have a higher bmi compared to females**.
+</blockquote>
+
+
+## Problem 2. Sampling Distributions
+
+
+i. Getting started: Go to the following web site:
+<http://onlinestatbook.com/stat_sim/sampling_dist/index.html>
+You will use the applet to generate random numbers from a true population distribution, here the 
+uniform distribution on the interval (0, 33)
+When the page comes up, wait for the “Begin” button to appear. Click “Begin” to open the site. 
+When the site (“applet”) opens, notice that there are 4 sections with graphs labeled “Parent 
+Population”, “Sample Data”, “Distribution of Means” and a fourth graph that is not labeled. 
+Click on the menu at the upper right (“Normal”) in the first section, and select “Uniform.” 
+Notice how the shape of the graph labeled “Parent Population” changes. Below, where it says 
+“N=5" (under “Mean”), click the menu and change the selection to “N=2.”Now you are ready to 
+do the next step ii.
+
+
+ii. Means of samples of size n=2: 
+In the second panel, on the right side click “100,000.” This will generate 100,000 samples 
+(simulating all possible samples) of two random waiting times (n=2). The third graph labeled 
+“Distribution of Means,” will then form a histogram of the mean values from those samples.
+Describe the shape of the histogram of means recorded by the applet in the third graph. Record 
+and report the mean and standard deviation of the distribution of means for n=2 in the table in 
+part v.
+
+
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution with a mean of 16.04, median of 16.00, and standard deviation of 6.75.
+</blockquote>
+
+
+iii. Means of samples of size n=5:
+Now, go to the top section and click “Clear lower 3". Then, click the menu “N=2" in the third 
+section and change it to “N=5". In the second panel, on the right side, click “100,000.” This will 
+generate 100,000 samples (simulating all possible samples) of five random waiting times (n=5). 
+The third graph labeled “Distribution of Means,” will then form a histogram of the mean values 
+from those samples.
+Again, describe the shape of the distribution of means given by the applet in the third graph. 
+Record and report the mean and standard deviation of the distribution of means for n=5 in the 
+table in part v.
+
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution, which tail is relatively fatter compared with ii., with a mean of 16.02, median of 16.00, and standard deviation of 4.26.
+</blockquote>
+
+
+iv. Means of samples of size n=25: 
+Go to the top section and click “Clear lower 3" one more time. Then change “N=5" to “N=25" 
+in the third section. In the second panel, on the right side, click “100,000.” This will generate 
+100,000 samples (simulating all possible samples) of twenty-five random waiting times (n=25). 
+The third graph, labeled “Distribution of Means,” will then form a histogram of the mean values 
+from those samples.
+
+Once more, describe the shape of the distribution of means given by the applet. Record and 
+report the mean and standard deviation of the distribution of means for n=25 in the table in part v 
+below.
+
+<blockquote>
+The shape of the histogram of means is a bell-shaped approximately normal distribution, which tail is relatively fatter compared with iii., with a mean of 16.00, median of 16.00, and standard deviation of 1.91.
+</blockquote>
+
+
+v. The population distribution from which you’ve been sampling has mean=16 and variance 90. 
+Complete the table below with the estimated means and standard deviations of the sampling 
+distribution that you obtained from your 100,000 replicates (simulating all possible samples) in 
+parts ii-iv above and with the known theoretical values given by the Central Limit Theorem.
+
+<blockquote>
+<table>
+          <tr>
+              <th>  Sample </br> Size  </th><th colspan="2">  Observed </br> Statistics  </th><th colspan="2">  Theoretical </br> Values  </th>
+          <tr>
+              <th>(n)</th><th>Mean</th><th>SD</th><th>Mean</th><th>SD</th>
+          <tr>
+              <td>2</td><td>16.04</td><td>6.75</td><td>16.00</td><td>6.71</td>
+          </tr>
+          <tr>
+              <td>5</td><td>16.02</td><td>4.26</td><td>16.00</td><td>4.24</td>
+          </tr>
+          <tr>
+              <td>25</td><td>16.00</td><td>1.91</td><td>16.00</td><td>1.90</td>
+          </tr>
+          <tr>
+              <td>100</td><td>NA</td><td>NA</td><td>16.00</td><td>0.95</td>
+          </tr>
+</table>
+</blockquote>
+
+
+vi. In a few sentences, explain how far the sample means tend to be from the true population 
+mean and how the deviation depends on the population variance and sample size. State 
+the Central Limit Theorem in your own words.
+
+<blockquote>
+With sample size larger, the sample means tend to be more close to the true population mean. The deviation of the sample mean depends on the population variance and sample size, i.e., with population variance lower, the deviation of the sample means tend to be lower; and, with sample size larger, the deviation of the sample means tend to be lower. The Central Limit Theorem in my own words is, even though the population distribution may not be normal, given the sample size is large, the mean of the sample means will still equal to the true population mean, and the variance of the sample means will still equall to the population variance devided by the sample size, and the distribution of sample means will still approximate to normal distribution.
+</blockquote>
