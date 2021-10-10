@@ -11,10 +11,18 @@ require("knitr")
 opts_knit$set(root.dir = "D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 4")
 ```
 
-```{r}
+```{css}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+```
+
+```{r, message = FALSE}
 # Set up
 setwd("D:/OneDrive - Johns Hopkins/Course/140.621.81 - Statistical Methods in Public Health I/Problem set/jhsphbiostat621-assignment/Problem Set 4")
-require(gt)
 ```
 
 
@@ -27,7 +35,7 @@ require(gt)
 0. Load the tidyverse with: `library(tidyverse)` and import the data set and name it
 `balt621`. Also, don’t forget to open a script file in order to save your work.
 
-```{r}
+```{r, message = FALSE}
 require(tidyverse)
 balt621 <- read_csv("./data/balt621.csv")
 ```
@@ -43,20 +51,17 @@ balt621 %>%
               mean_pm10 = mean(pm10, na.rm=TRUE),
               n_mortality = sum(!is.na(death)),
               mean_mortality = mean(death)) %>%
-    gt() %>%
-    tab_header(title = md("**Mean PM10 level and mean daily mortality by season**")) %>%
-    fmt_number(columns = c("mean_pm10", "mean_mortality"),
-               decimals = 2)
+    kable()
 ```
 
 
 ii. For each of the four seasonal strata, stratify the days into 5 pollution (pm10) strata.
 
-```{r}
+```{r, results = 'asis'}
 pm10.season <- list() # Empty list for each seasonal strata
+pm10.season.table <- list()
 
 for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
-    print(paste("#Strata of season", seas, sep = " "))
     pm10.season[[seas]] <-
         balt621 %>%
         filter(season == seas) %>%
@@ -66,8 +71,17 @@ for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
                                                  na.rm = TRUE),
                               labels = 1:5))
     
-    print(table(pm10.season[[seas]]$pm_group))
+    pm10.season.table[[seas]] <- table(pm10.season[[seas]]$pm_group)
+
 }
+
+bind_rows("Autumn" = pm10.season.table[["Autumn"]],
+          "Spring" = pm10.season.table[["Spring"]],
+          "Summer" = pm10.season.table[["Summer"]],
+          "Winter" = pm10.season.table[["Summer"]],
+          .id = "Season.Strata") %>%
+    kable()
+    
 ```
 
 
@@ -75,25 +89,37 @@ iii. Separately for your four seasonal strata, calculate the mean mortality in t
 highest of the five pollution strata.
 
 ```{r, results = 'asis'}
+pm10.season.summary <- list()
 for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
-    pm10.season[[seas]] %>%
-        filter(pm_group == 1) %>%
-        summarize(mean = mean(death),
-                  sd = sd(death),
-                  n = n()) %>%
-        gt() %>%
-        tab_header(title = paste("Mean morality in the lowest pollution strata in", seas, sep = " ")) %>%
-        print()
-    
-    pm10.season[[seas]] %>%
-        filter(pm_group == 5) %>%
-        summarize(mean = mean(death),
-                  sd = sd(death),
-                  n = n()) %>%
-        gt() %>%
-        tab_header(title = paste("Mean morality in the highest pollution strata in", seas, sep = " ")) %>%
-        print()
+   pm10.season.summary[[paste0(seas, "1")]] <-
+   pm10.season[[seas]] %>%
+       filter(pm_group == 1) %>%
+       summarize(mean = mean(death),
+                 sd = sd(death),
+                 n = n())
+   
+   pm10.season.summary[[paste0(seas, "5")]] <-
+   pm10.season[[seas]] %>%
+       filter(pm_group == 5) %>%
+       summarize(mean = mean(death),
+                 sd = sd(death),
+                 n = n())
 }
+
+bind_rows("Autumn:Low" = pm10.season.summary[["Autumn1"]],
+          "Autumn:High" = pm10.season.summary[["Autumn5"]],
+          "Spring:Low" = pm10.season.summary[["Spring1"]],
+          "Spring:High" = pm10.season.summary[["Spring5"]],
+          "Summer:Low" = pm10.season.summary[["Summer1"]],
+          "Summer:High" = pm10.season.summary[["Summer5"]],
+          "Winter:Low" = pm10.season.summary[["Winter1"]],
+          "Winter:High" = pm10.season.summary[["Winter5"]],
+          .id = "Group") %>%
+    separate(Group, c("Season", "Strata"), ":") %>%
+    select(Strata:n) %>%
+    kable() %>%
+    kableExtra::pack_rows(index = c("Autumn" = 2, "Spring" = 2, "Summer" = 2, "Winter" = 2)) %>%
+    kableExtra::kable_styling()
 ```
 
 
@@ -121,7 +147,61 @@ for(seas in c("Autumn", "Spring", "Summer", "Winter")) {
 v. For each seasonal stratum, calculate by hand a 95% confidence interval for the true mean
 mortality difference between the lowest and highest pollution days. 
 
+<blockquote>
+1. Autumn:
+
+$$
+\bar{X_{1}} - \bar{X_{2}} \pm t_{0.05/2, df=221} * s_{\bar{X_{1}} - \bar{X_{2}}}
+      = 19.82 - 20.53 \pm 1.97 * \sqrt{\frac{5.43^{2}}{112} + \frac{5.38^{2}}{111}}
+      = [-2.14, 0.72]
+$$
+
+2. Spring:
+
+$$
+\bar{X_{1}} - \bar{X_{2}} \pm t_{0.05/2, df=217} * s_{\bar{X_{1}} - \bar{X_{2}}}
+      = 18.55 - 18.99 \pm 1.97 * \sqrt{\frac{4.19^{2}}{112} + \frac{5.01^{2}}{113}}
+      = [-1.65, 0.77]
+$$
+
+3. Summer:
+
+$$
+\bar{X_{1}} - \bar{X_{2}} \pm t_{0.05/2, df=207} * s_{\bar{X_{1}} - \bar{X_{2}}}
+      = 17.63 - 19.93 \pm 1.97 * \sqrt{\frac{4.15^{2}}{114} + \frac{5.68^{2}}{114}}
+      = [-3.60, -1.00]
+$$
+
+4. Winter:
+
+$$
+\bar{X_{1}} - \bar{X_{2}} \pm t_{0.05/2, df=218} * s_{\bar{X_{1}} - \bar{X_{2}}}
+      = 22.24 - 21.35 \pm 1.97 * \sqrt{\frac{5.30^{2}}{110} + \frac{5.35^{2}}{110}}
+      = [-0.52, 2.30]
+$$
+</blockquote>
 
 
+vi. In a table, for each of the four seasonal strata, show the mean mortality on low pollution 
+days and its interval estimate, the mean mortality on high pollution days and its interval 
+estimate, and the difference in mean mortality with interval estimate for the difference in 
+mean mortality between low and high pollution days.
 
+<blockquote>
+|Season|Mortality on low pollution days </br> mean[95%CI]|Mortality on high pollution days </br> mean[95%CI]|Difference in mean mortality </br> mean[95%CI]|
+|:--:|:--:|:--:|:--:|
+|Autumn|19.82 [18.81, 20.83]|20.53 [19.51, 21.54]|-0.71 [-2.14, 0.72]|
+|Spring|18.55 [17.77, 19.34]|18.99 [18.06, 19.92]|-0.44 [-1.65, 0.77]|
+|Summer|17.63 [16.86, 18.40]|19.93 [18.88, 20.98]|-2.30 [-3.60, -1.00]|
+|Winter|22.24 [21.24, 23.24]|21.35 [20.34, 22.37]|0.88 [-0.52, 2.30]
+</blockquote>
+
+
+vii. Summarize your findings in a few sentences about whether mortality is associated with 
+pollution (PM10) when controlling for seasonality and whether season modifies this 
+association. Be quantitative citing mortality differences with their CIs.
+
+<blockquote>
+When setting the statistical significant level as \alpha = 0.05, as shown in the results above, only within the summer subgroup, confidence interval of the difference in mean mortality between low and high pollution days did not cover the null value 0, and p-value < 0.05 with t-score within rejection region; thus can reject the null hypothesis. However, within autumn, spring, or winter subgroup, confidence interval of the difference in mean mortality between low and high pollution days all cover the null value 0, and p-value > 0.05 with t-score out of the rejection region; thus cannot reject the null hypothesis. These results indicate that when controlling for seasonality, **mortality is associated with pollution (PM10) *only* within the summer subgroup**, and not associated with pollution (PM10) within autumn, spring, or winter subgroup. Since the association between mortality and pollution (PM10) varies, **seasonality is an effect modifier for this association**.
+</blockquote>
 
